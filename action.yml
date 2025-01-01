@@ -15,7 +15,6 @@ inputs:
   gitignore:
     description: >
       Respect ignore patterns in .gitignore files that apply to the globbed files.
-    default: 'true'
     required: false
   ignoreFiles:
     description: >
