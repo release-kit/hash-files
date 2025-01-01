@@ -12,10 +12,6 @@ inputs:
       The patterns used to match files. You can input multiple patterns seperated by `\n`.
       We recommand using `|` to concat the patterns in `.yml` files.
     required: true
-  gitignore:
-    description: >
-      Respect ignore patterns in .gitignore files that apply to the globbed files.
-    required: false
   ignoreFiles:
     description: >
       Glob patterns to look for ignore files, which are then used to ignore globbed files.

@@ -29,14 +29,6 @@ export function getInputAsInt(
   return value
 }
 
-export function getInputAsBool(
-  name: string,
-  options?: core.InputOptions,
-): boolean {
-  const result = core.getInput(name, options)
-  return result.toLowerCase() === 'true'
-}
-
 export function hashHex(content: BinaryLike, shaAlgorithm = 'sha256'): string {
   return crypto.createHash(shaAlgorithm).update(content).digest('hex')
 }

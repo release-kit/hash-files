@@ -30,7 +30,6 @@ The hash function is based on [nektos/act](https://github.com/nektos/act/blob/ac
 |---|---|---|---|
 |workdir|The working dir for the action|false|${{ github.workspace }}|
 |patterns|The patterns used to match files|true||
-|gitignore|Respect ignore patterns in .gitignore files that apply to the globbed files.|false|false
 |ignoreFiles|Glob patterns to look for ignore files, which are then used to ignore globbed files.|false|
 
 ## Output

@@ -10,7 +10,6 @@ async function run(): Promise<void> {
     const patterns = utils.getInputAsArray(Inputs.Patterns, {
       required: true,
     })
-    const gitignore = utils.getInputAsBool(Inputs.Gitignore)
     const ignoreFiles = utils.getInputAsArray(Inputs.IgnoreFiles)
 
     if (!workdir.endsWith('/')) {
@@ -19,10 +18,9 @@ async function run(): Promise<void> {
 
     core.debug(`workdir: ${workdir}`)
     core.debug(`patterns: ${patterns}`)
-    core.debug(`gitignore: ${gitignore}`)
     core.debug(`ignoreFiles: ${ignoreFiles}`)
 
-    const files = await getFiles(workdir, patterns, { gitignore, ignoreFiles })
+    const files = await getFiles(workdir, patterns, { ignoreFiles })
     let hash = ''
 
     const reads = files.map(async (file) => readFile(file))
