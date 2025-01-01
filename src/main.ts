@@ -1,16 +1,16 @@
 import * as core from '@actions/core'
-import {Inputs, Outputs} from './constants'
+import { Inputs, Outputs } from './constants'
+import { getFiles, readFile } from './files'
 import * as utils from './utils'
-import {getFiles, readFile} from './files'
-import {hashHexAsync} from './utils'
+import { hashHexAsync } from './utils'
 
 async function run(): Promise<void> {
   try {
-    let workdir: string = utils.getInput(Inputs.Workdir, {required: true})
+    let workdir: string = utils.getInput(Inputs.Workdir, { required: true })
     const patterns = utils.getInputAsArray(Inputs.Patterns, {
-      required: true
+      required: true,
     })
-    const gitignore = utils.getInputAsBool(Inputs.Gitignore) || true
+    const gitignore = utils.getInputAsBool(Inputs.Gitignore)
     const ignoreFiles = utils.getInputAsArray(Inputs.IgnoreFiles)
 
     if (!workdir.endsWith('/')) {
@@ -22,13 +22,13 @@ async function run(): Promise<void> {
     core.debug(`gitignore: ${gitignore}`)
     core.debug(`ignoreFiles: ${ignoreFiles}`)
 
-    const files = await getFiles(workdir, patterns, {gitignore, ignoreFiles})
+    const files = await getFiles(workdir, patterns, { gitignore, ignoreFiles })
     let hash = ''
 
-    const reads = files.map(async file => readFile(file))
+    const reads = files.map(async (file) => readFile(file))
     const fileContents = await Promise.all(reads)
     const contents = await Promise.all(
-      fileContents.map(async fileContent => hashHexAsync(fileContent))
+      fileContents.map(async (fileContent) => hashHexAsync(fileContent)),
     )
 
     if (contents.length === 1) {

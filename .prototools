@@ -1,0 +1,4 @@
+node = "20.18.1"
+
+[settings]
+auto-install = true
