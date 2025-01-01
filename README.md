@@ -9,7 +9,7 @@ The hash function is based on [nektos/act](https://github.com/nektos/act/blob/ac
 ## Usage
 
 ``` yml
-- uses: seepine/hash-files@v1
+- uses: release-kit/hash-files@v1
   with:
     # The working dir for the action.
     # Default: ${{ github.workspace }}
@@ -43,9 +43,9 @@ The hash function is based on [nektos/act](https://github.com/nektos/act/blob/ac
 ## Example
 ``` yml
 # Setup the Node environment. This step can be skipped if Node has been installed.
-- uses: actions/setup-node@v3
+- uses: actions/setup-node@v4
 
-- uses: seepine/hash-files@v1
+- uses: release-kit/hash-files@v1
   id: get-hash
   with: 
     patterns: |
